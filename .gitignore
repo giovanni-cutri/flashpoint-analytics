@@ -1,3 +1,7 @@
+# Data source
+notebooks/data/flashpoint.sqlite
+scripts/data/flashpoint.sqlite
+
 # Jupyter Notebook files
 .ipynb_checkpoints
 
