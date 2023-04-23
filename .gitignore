@@ -1,6 +1,8 @@
 # Data source
 notebooks/data/flashpoint.sqlite
+notebooks/data/most_played.csv
 scripts/data/flashpoint.sqlite
+scripts/data/most_played.csv
 
 # Jupyter Notebook files
 .ipynb_checkpoints
