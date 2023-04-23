@@ -11,7 +11,7 @@
 
 # ## Import modules
 
-# In[100]:
+# In[1]:
 
 
 import os
@@ -30,16 +30,16 @@ import warnings
 
 # ## Retrieve data
 
-# In[101]:
+# In[2]:
 
 
-os.mkdir("data")
+#os.mkdir("data")
 
 # download data from the source
 
 url = "http://infinity.unstable.life/Flashpoint/Data/flashpoint.sqlite"
 filename = "data/flashpoint.sqlite"
-urllib.request.urlretrieve(url, filename)
+#urllib.request.urlretrieve(url, filename)
 
 # connect to the database and store the "game" table in a dataframe
 
@@ -52,7 +52,7 @@ con.close()
 
 # Let's have a first look at our data.
 
-# In[102]:
+# In[3]:
 
 
 df.info()
@@ -60,7 +60,7 @@ df.info()
 
 # There is a total of 27 variables and almost all of them belong to the *object* data type. We are going to need only some of them, so let's keep only the relevant ones.
 
-# In[103]:
+# In[4]:
 
 
 vars_to_keep = ["id", "title", "developer", "publisher", "platform", "releaseDate", "language", "library", "tagsStr"]
@@ -72,7 +72,7 @@ df.info()
 
 # To complete our preliminary analysis, let's print the first rows of our dataframe.
 
-# In[104]:
+# In[5]:
 
 
 df.head()
@@ -84,7 +84,7 @@ df.head()
 
 # It would be interesting to know which are the most prolific developers and publishers. Let's find out by creating a frequency table for each variable and looking at the first ten entries.
 
-# In[105]:
+# In[6]:
 
 
 top_developers = df["developer"].value_counts()[:10]
@@ -93,7 +93,7 @@ top_developers
 
 # The first row is blank because some games (actually, most of them) do not have a developer value associated in the database. Let's filter out those entries.
 
-# In[106]:
+# In[7]:
 
 
 top_developers = df.loc[df.developer != '', "developer"].value_counts()[:10]
@@ -102,7 +102,7 @@ top_developers
 
 # These are the most represented developers in the database. It is impressive to notice that almost all of them are known to be specialised in escape games, which we can suppose to be a very popular genre; we will dig into this later. Lastly, a special mention for Neopets, which managed to build a passionate community still active after over 20 years.
 
-# In[107]:
+# In[8]:
 
 
 top_publishers = df.loc[df.publisher != '', "publisher"].value_counts()[:10]
@@ -113,13 +113,13 @@ top_publishers
 
 # Now let's look at a visualization of the same data, by making use of bar plots and pie charts.
 
-# In[108]:
+# In[9]:
 
 
 sns.barplot(x = top_developers.values, y = top_developers.index, orient = "h").set(title = "Top ten developers distribution");
 
 
-# In[109]:
+# In[10]:
 
 
 labels = top_developers.index
@@ -129,13 +129,13 @@ plt.title("Top ten developers distribution")
 plt.show()
 
 
-# In[110]:
+# In[11]:
 
 
 sns.barplot(x = top_publishers.values, y = top_publishers.index, orient = "h").set(title = "Top ten publishers distribution");
 
 
-# In[111]:
+# In[12]:
 
 
 labels = top_publishers.index
@@ -149,7 +149,7 @@ plt.show()
 
 # Flash games started to appear towards the end of the twentieth century and became popular in the next decade. Let's observe the release dates we have got here, being aware that they are not specified for all games.
 
-# In[112]:
+# In[13]:
 
 
 df_dates = df.loc[(df.releaseDate != ""), ["title", "releaseDate", "platform", "library"]].sort_values(by=["releaseDate"])
@@ -158,7 +158,7 @@ df_dates
 
 # There seems to be a problem with the data. Entries should follow the "YY-MM-DD" date format as per Flashpoint guidelines, but some games come in a different one. In addition, if the exact day or month of release is unknown, it is allowed to specify the year only. Let's clean up our data for consistency.
 
-# In[113]:
+# In[14]:
 
 
 warnings.filterwarnings("ignore", category = UserWarning)
@@ -170,7 +170,7 @@ df_dates
 # *Pandas* automatically assigned January 1 as month and day for those games whose only date information was the year.
 # There is still one odd observation, the last one, which is most likely a typo.
 
-# In[114]:
+# In[15]:
 
 
 df_dates = df_dates[:-1]
@@ -181,7 +181,7 @@ df_dates[:20]
 # 
 # We can actually distinguish between proper games and animations by looking at the *library* column: the former are labeled with *arcade*, the latter with *theatre* values. Thus, the oldest animation featured is *Idle Johnny* from 1993, while the first "true" game (not counting *Blastar*) could be either *QP-Shot 1000* (which came out at some time in 1994), or *Virtual Banana Original* and *Virtual University of Auckland*, both from February 1st, 1994.
 
-# In[115]:
+# In[16]:
 
 
 df_dates = df_dates[1:]
@@ -192,7 +192,7 @@ df_dates[-20:]
 
 # For the sake of completeness, let's restrict our search to *Flash*-only games.
 
-# In[116]:
+# In[17]:
 
 
 df_dates.loc[(df_dates.platform == "Flash")][:20]
@@ -202,21 +202,21 @@ df_dates.loc[(df_dates.platform == "Flash")][:20]
 
 # To take an overall view, let's compare the various platforms by games count, considering the top five.
 
-# In[117]:
+# In[18]:
 
 
 top_platforms = df_dates["platform"].value_counts()[:5]
 top_platforms
 
 
-# In[118]:
+# In[19]:
 
 
 colors = ["red", "orange", "green", "black", "blue"]
 sns.barplot(x = top_platforms.values, y = top_platforms.index, orient = "h", palette = colors).set(title = "Top five platforms distribution");
 
 
-# In[119]:
+# In[20]:
 
 
 labels = top_platforms.index
@@ -230,7 +230,7 @@ plt.show()
 
 # Web games were at their peak in the 2000s and many gamers are nostalgic about that decade, which could be considered a golden age. Thus, we expect to see that most of the games in our database have been released between 2000 and 2009. Let's check it out, while also comparing technologies against years.
 
-# In[120]:
+# In[21]:
 
 
 df_year_platform = df_dates.loc[(df_dates["platform"].isin(top_platforms.index)), :].copy()
@@ -247,7 +247,7 @@ df_year_platform.groupby(["releaseDate", "platform"]).size().unstack().plot(kind
 
 # Let's move on to another topic: *Flashpoint* allows non-English content as well, and it can be interesting to know which countries have contributed the most to the world of web games aside from the anglophone ones.
 
-# In[121]:
+# In[22]:
 
 
 top_languages = df.loc[df["language"] != "", "language"].str.split("; ").explode().value_counts().drop("en")[:10]
@@ -256,13 +256,13 @@ top_languages
 
 # Since a game can come in different languages, separated by a colon and a space ("; "), we had to count each occurrence individually.
 
-# In[122]:
+# In[23]:
 
 
 sns.barplot(x = top_languages.values, y = top_languages.index, orient = "h").set(title = "Top ten languages distribution");
 
 
-# In[123]:
+# In[24]:
 
 
 labels = top_languages.index
@@ -278,20 +278,20 @@ plt.show()
 
 # Let's now focus on game genres, featured on the *tagsStr* column, to discover the most common ones.
 
-# In[124]:
+# In[25]:
 
 
 top_genres = df.loc[df["tagsStr"] != "", "tagsStr"].str.split("; ").explode().value_counts()[:10]
 top_genres
 
 
-# In[125]:
+# In[26]:
 
 
 sns.barplot(x = top_genres.values, y = top_genres.index, orient = "h").set(title = "Top ten genres distribution");
 
 
-# In[126]:
+# In[27]:
 
 
 labels = top_genres.index
@@ -307,7 +307,7 @@ plt.show()
 
 # As a final insight, let's find out which are the most played games among the *Flashpoint* users: to do this, we are going to use some official statistics from the platform itself. Visit https://flashpoint-analytics.unstable.life/, scroll down to the corresponding section and download the data in .csv format.
 
-# In[127]:
+# In[28]:
 
 
 most_played = pd.read_csv("data/most_played.csv")
@@ -317,14 +317,14 @@ most_played
 
 # The file contains the *id* for the most 40 played games, along with a play count. Let's use the identifiers to find the titles of these games and their other info.
 
-# In[128]:
+# In[29]:
 
 
 df_rank = df.merge(most_played, on = "id").sort_values("Play Count", ascending = False).reset_index()
 df_rank
 
 
-# In[129]:
+# In[30]:
 
 
 fig, ax = plt.subplots(figsize=(10, 15))
