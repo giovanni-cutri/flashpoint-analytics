@@ -33,13 +33,13 @@ import warnings
 # In[2]:
 
 
-#os.mkdir("data")
+os.mkdir("data")
 
 # download data from the source
 
 url = "http://infinity.unstable.life/Flashpoint/Data/flashpoint.sqlite"
 filename = "data/flashpoint.sqlite"
-#urllib.request.urlretrieve(url, filename)
+urllib.request.urlretrieve(url, filename)
 
 # connect to the database and store the "game" table in a dataframe
 
@@ -124,7 +124,9 @@ sns.barplot(x = top_developers.values, y = top_developers.index, orient = "h").s
 
 labels = top_developers.index
 sizes = top_developers.values / top_developers.values.sum() * 100
-plt.pie(sizes, labels = labels)
+plt.pie(sizes, textprops = {"color":"w"})
+labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
+plt.legend(labels = labels, bbox_to_anchor = (1.6,1), loc = "best")
 plt.title("Top ten developers distribution")
 plt.show()
 
@@ -140,7 +142,9 @@ sns.barplot(x = top_publishers.values, y = top_publishers.index, orient = "h").s
 
 labels = top_publishers.index
 sizes = top_publishers.values / top_publishers.values.sum() * 100
-plt.pie(sizes, labels = labels)
+plt.pie(sizes, textprops = {"color":"w"})
+labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
+plt.legend(labels = labels, bbox_to_anchor = (1.6,1), loc = "best")
 plt.title("Top ten publishers distribution")
 plt.show()
 
@@ -221,7 +225,9 @@ sns.barplot(x = top_platforms.values, y = top_platforms.index, orient = "h", pal
 
 labels = top_platforms.index
 sizes = top_platforms.values / top_platforms.values.sum() * 100
-plt.pie(sizes, labels = labels, colors = colors)
+plt.pie(sizes, colors = colors, textprops = {"color":"w"})
+labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
+plt.legend(labels = labels, bbox_to_anchor = (1.5,1), loc = "best")
 plt.title("Top ten platforms distribution")
 plt.show()
 
@@ -267,7 +273,9 @@ sns.barplot(x = top_languages.values, y = top_languages.index, orient = "h").set
 
 labels = top_languages.index
 sizes = top_languages.values / top_languages.values.sum() * 100
-plt.pie(sizes, labels = labels)
+plt.pie(sizes, textprops = {"color":"w"})
+labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
+plt.legend(labels = labels, bbox_to_anchor = (1.4,1), loc = "best")
 plt.title("Top ten languages distribution")
 plt.show()
 
@@ -296,7 +304,9 @@ sns.barplot(x = top_genres.values, y = top_genres.index, orient = "h").set(title
 
 labels = top_genres.index
 sizes = top_genres.values / top_genres.values.sum() * 100
-plt.pie(sizes, labels = labels)
+plt.pie(sizes, textprops = {"color":"w"})
+labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
+plt.legend(labels = labels, bbox_to_anchor = (1.6,1), loc = "best")
 plt.title("Top ten genres distribution")
 plt.show()
 
