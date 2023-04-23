@@ -1,8 +1,8 @@
 # Flashpoint Analytics
 A descriptive statistical analysis about [Flashpoint](https://bluemaxima.org/flashpoint/) web-game preservation project, made using Python (with the *pandas* library) and R.
 
-
-# Notebooks
+ 
+## Notebooks :books: 
 
 | Language | Link                                                                                                                             |
 |----------|----------------------------------------------------------------------------------------------------------------------------------|
@@ -10,7 +10,7 @@ A descriptive statistical analysis about [Flashpoint](https://bluemaxima.org/fla
 | R        | [R Markdown (WIP)]()                                                                                                             |
 
 
-# Code
+## Code :keyboard: 
 
 | Language | Link                                                                                                    |
 |----------|---------------------------------------------------------------------------------------------------------|
@@ -18,17 +18,17 @@ A descriptive statistical analysis about [Flashpoint](https://bluemaxima.org/fla
 | R        | [Script (WIP)]()                                                                                        |
 
 
-# HTML
+## HTML :scroll:
 
 | Language | Link                                                                                                           |
 |----------|----------------------------------------------------------------------------------------------------------------|
-| Python   | [HTML](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/html/flashpoint_analytics_python.html) |
-| R        | [HTML (WIP)]()                                                                                                 |
+| Python   | [HTML version](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/html/flashpoint_analytics_python.html) |
+| R        | [HTML version (WIP)]()                                                                                                 |
 
 
-# PDF
+## PDF :book:
 
 | Language | Link                                                                                                        |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| Python   | [PDF](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/pdf/flashpoint_analytics_python.pdf) |
-| R        | [PDF (WIP)]()                                                                                               |
+| Python   | [PDF version](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/pdf/flashpoint_analytics_python.pdf) |
+| R        | [PDF version (WIP)]()                                                                                               |
