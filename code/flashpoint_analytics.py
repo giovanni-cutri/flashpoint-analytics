@@ -256,7 +256,7 @@ df_year_platform.groupby(["releaseDate", "platform"]).size().unstack().plot(kind
 # In[22]:
 
 
-top_languages = df.loc[df["language"] != "", "language"].str.split("; ").explode().value_counts().drop("en")[:10]
+top_languages = df.loc[df["language"] != "", "language"].str.replace(",", ";").str.split("; ").explode().value_counts().drop("en")[:10]
 top_languages
 
 
@@ -289,7 +289,7 @@ plt.show()
 # In[25]:
 
 
-top_genres = df.loc[df["tagsStr"] != "", "tagsStr"].str.split("; ").explode().value_counts()[:10]
+top_genres = df.loc[df["tagsStr"] != "", "tagsStr"].str.replace(",", ";").str.split("; ").explode().value_counts()[:10]
 top_genres
 
 
