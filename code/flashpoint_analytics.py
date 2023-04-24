@@ -228,7 +228,7 @@ sizes = top_platforms.values / top_platforms.values.sum() * 100
 plt.pie(sizes, colors = colors, textprops = {"color":"w"})
 labels = [f"{l} - {s:0.1f}%" for l, s in zip(labels, sizes)]
 plt.legend(labels = labels, bbox_to_anchor = (1.5,1), loc = "best")
-plt.title("Top ten platforms distribution")
+plt.title("Top five platforms distribution")
 plt.show()
 
 
