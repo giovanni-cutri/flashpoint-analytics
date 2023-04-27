@@ -2,12 +2,12 @@
 A descriptive statistical analysis about [Flashpoint](https://bluemaxima.org/flashpoint/) web-game preservation project, made using Python (with the *pandas* library) and R.
 
  
-## Jupyter Notebooks :books: 
+## Notebooks :books: 
 
-| Language | Link                                                                                                                     |
-|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Python   | [Notebook](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/notebooks/flashpoint_analytics_python.ipynb) |
-| R        | [Notebook](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/notebooks/flashpoint_analytics_r.ipynb)      |
+| Language | Link                                                                                                                      |
+|----------|---------------------------------------------------------------------------------------------------------------------------|
+| Python   | [Jupyter Notebook](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/notebooks/flashpoint_analytics.ipynb) |
+| R        | [R Markdown](https://github.com/giovanni-cutri/flashpoint-analytics/blob/main/notebooks/flashpoint_analytics.Rmd)         |
 
 
 ## Code :keyboard: 
