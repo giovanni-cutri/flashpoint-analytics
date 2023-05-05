@@ -1,7 +1,7 @@
 # Flashpoint Analytics
 A descriptive statistical analysis about [Flashpoint](https://bluemaxima.org/flashpoint/) web-game preservation project, made using Python (with the *pandas* library) and R.
 
- 
+
 ## Notebooks :books: 
 
 | Language | Link                                                                                                                      |
